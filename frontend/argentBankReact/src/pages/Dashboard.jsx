@@ -1,4 +1,4 @@
-const hero = () => {
+const Dashboard = () => {
     return (
         <main>
             <div className="hero">
@@ -62,4 +62,4 @@ const hero = () => {
     );
 };
 
-export default hero;
+export default Dashboard;
