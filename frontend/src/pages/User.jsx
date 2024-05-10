@@ -1,4 +1,8 @@
+import { useSelector } from "react-redux";
+
 const User = () => {
+    const user = useSelector((state) => state.user.user);
+
     return (
         <div className="body-user">
             <main className="main bg-dark">
@@ -6,8 +10,8 @@ const User = () => {
                     <h1>
                         Welcome back
                         <br />
-                        Tony Jarvis!
-                    </h1>
+                        {user?.firstName} {user?.lastName}
+                    </h1>{" "}
                     <button className="edit-button">Edit Name</button>
                 </div>
                 <h2 className="sr-only">Accounts</h2>

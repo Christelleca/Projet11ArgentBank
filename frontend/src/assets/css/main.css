@@ -188,6 +188,11 @@ body,
     margin-left: 0.25rem;
 }
 
+.alert_login {
+    margin-left: 0.25rem;
+    color: red;
+}
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
