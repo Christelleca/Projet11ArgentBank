@@ -1,7 +1,15 @@
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
     const user = useSelector((state) => state.user.user);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("user"); // Mettre à jour la clé ici
+        console.log("Token:", token);
+    }, []);
 
     return (
         <div className="body-user">

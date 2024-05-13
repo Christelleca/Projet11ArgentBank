@@ -10,10 +10,11 @@ export const loginUser = createAsyncThunk(
                 { email, password }
             );
 
-            localStorage.setItem("user", JSON.stringify(response.data));
-            return response.data; // Renvoie les données de la réponse, pas toute la réponse
+            localStorage.setItem("token", response.data.token); // Stocke le token dans le stockage local
+
+            return response.data;
         } catch (error) {
-            throw new Error("Failed to log in"); // Gère les erreurs
+            throw new Error("Failed to log in");
         }
     }
 );

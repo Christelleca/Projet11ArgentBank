@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../store/UserSlice";
+import { loginUser } from "../redux/UserSlice";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
@@ -11,6 +11,14 @@ const SignIn = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    // Vérifiez si le token existe dans le stockage local
+    const token = localStorage.getItem("token");
+    if (token) {
+        // Si le token existe, redirigez l'utilisateur vers la page User
+        navigate("/User");
+    }
+
     const handleLoginEvent = (e) => {
         e.preventDefault();
         let userCredentials = {
