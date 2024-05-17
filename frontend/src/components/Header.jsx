@@ -1,16 +1,24 @@
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../redux/TokenSlice"; // Assurez-vous que logout est bien exporté depuis TokenSlice
 
 function Header() {
-    const user = useSelector((state) => state.user.user);
-    const token = localStorage.getItem("token");
+    const user = useSelector((state) => state.userProfile.user);
+    const token = useSelector((state) => state.token.token);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
+        dispatch(logout());
         navigate("/");
     };
+
+    // Utiliser useEffect pour surveiller les changements de token et de user
+    useEffect(() => {
+        // Forcer la mise à jour si nécessaire
+    }, [token, user]);
 
     return (
         <nav className="main-nav">
@@ -26,7 +34,7 @@ function Header() {
                 <div>
                     <NavLink className="main-nav-item" to="/user">
                         <i className="fa fa-user-circle"></i>
-                        Tony
+                        {user?.userName || "User"} {/* Affiche le userName */}
                     </NavLink>
                     <NavLink
                         className="main-nav-item"

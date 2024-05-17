@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/SignIn";
-import User from "./pages/User";
+import User from "./pages/UserAccount";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {

@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../redux/UserSlice";
+import { loginUser } from "../redux/TokenSlice";
+import { fetchUserProfile } from "../redux/UserProfileSlice";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { loading, error } = useSelector((state) => state.user);
+    const { loading, error } = useSelector((state) => state.token);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    // Vérifiez si le token existe dans le stockage local
-    const token = localStorage.getItem("token");
-    if (token) {
-        // Si le token existe, redirigez l'utilisateur vers la page User
-        navigate("/User");
-    }
 
     const handleLoginEvent = (e) => {
         e.preventDefault();
@@ -27,9 +21,12 @@ const SignIn = () => {
         };
         dispatch(loginUser(userCredentials)).then((result) => {
             if (result.payload) {
+                console.log("Login successful, token stored.");
                 setEmail("");
                 setPassword("");
-                navigate("/User");
+                dispatch(fetchUserProfile()).then(() => {
+                    navigate("/User");
+                });
             }
         });
     };
@@ -63,8 +60,8 @@ const SignIn = () => {
                             <input type="checkbox" id="remember-me" />
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
-                        <button className="sign-in-button" to="/User">
-                            {loading ? "loading..." : "Sing In"}
+                        <button className="sign-in-button" type="submit">
+                            {loading ? "loading..." : "Sign In"}
                         </button>
                         {error && (
                             <div className="alert_login" role="alert">

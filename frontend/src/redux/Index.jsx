@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./UserSlice";
+import tokenReducer from "./TokenSlice";
+import userProfileReducer from "./UserProfileSlice";
+import updateUserProfileReducer from "./UpdateUserProfileSlice";
 
 const store = configureStore({
     reducer: {
-        user: userReducer,
+        token: tokenReducer,
+        userProfile: userProfileReducer,
+        updateUserProfile: updateUserProfileReducer,
     },
 });
 

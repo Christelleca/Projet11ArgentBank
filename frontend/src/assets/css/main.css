@@ -155,7 +155,8 @@ body,
     margin-bottom: 0.5rem;
 }
 
-.sign-in-button {
+.sign-in-button,
+.modal-content button {
     display: block;
     width: 100%;
     padding: 8px;
@@ -167,7 +168,8 @@ body,
     color: #fff;
 }
 
-.sign-in-content {
+.sign-in-content,
+.modal-content {
     box-sizing: border-box;
     background-color: white;
     width: 300px;
@@ -200,7 +202,8 @@ body,
     margin-bottom: 1rem;
 }
 
-.input-wrapper label {
+.input-wrapper label,
+.modal-content label {
     font-weight: bold;
 }
 
@@ -295,4 +298,45 @@ body,
     .transaction-button {
         width: 200px;
     }
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-form {
+    height: 165px;
+    padding: 5px 0px 15px;
+}
+
+.close {
+    color: #aaa;
+    position: relative;
+    left: 122px;
+    bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content input {
+    padding: 5px;
+    font-size: 18px;
 }
