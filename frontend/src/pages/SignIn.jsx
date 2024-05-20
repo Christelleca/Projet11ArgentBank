@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/TokenSlice";
 import { fetchUserProfile } from "../redux/UserProfileSlice";
@@ -13,6 +13,13 @@ const SignIn = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            navigate("/User");
+        }
+    }, [navigate]);
+
     const handleLoginEvent = (e) => {
         e.preventDefault();
         let userCredentials = {
@@ -21,7 +28,6 @@ const SignIn = () => {
         };
         dispatch(loginUser(userCredentials)).then((result) => {
             if (result.payload) {
-                console.log("Login successful, token stored.");
                 setEmail("");
                 setPassword("");
                 dispatch(fetchUserProfile()).then(() => {

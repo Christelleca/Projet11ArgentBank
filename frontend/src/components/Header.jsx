@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../redux/TokenSlice"; // Assurez-vous que logout est bien exporté depuis TokenSlice
+import { logout } from "../redux/TokenSlice";
 
 function Header() {
     const user = useSelector((state) => state.userProfile.user);
@@ -16,9 +16,7 @@ function Header() {
     };
 
     // Utiliser useEffect pour surveiller les changements de token et de user
-    useEffect(() => {
-        // Forcer la mise à jour si nécessaire
-    }, [token, user]);
+    useEffect(() => {}, [token, user]);
 
     return (
         <nav className="main-nav">

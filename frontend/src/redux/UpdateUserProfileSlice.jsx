@@ -3,7 +3,8 @@ import axios from "axios";
 
 export const updateUserName = createAsyncThunk(
     "updateUserProfile/updateUserName",
-    async (newUserName, { getState }) => {
+    async (newUserName) => {
+        // Suppression de `getState`
         const token = localStorage.getItem("token");
         if (!token) {
             throw new Error("No token found");

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserName } from "../redux/UpdateUserProfileSlice"; // Assurez-vous de créer cette action dans votre UpdateUserProfileSlice
-import { fetchUserProfile } from "../redux/UserProfileSlice"; // Importer fetchUserProfile
+import { updateUserName } from "../redux/UpdateUserProfileSlice";
+import { fetchUserProfile } from "../redux/UserProfileSlice";
 
 const UserNameModal = ({ isOpen, onClose }) => {
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.userProfile.user);
-    const [newUserName, setNewUserName] = useState(""); // Initialiser à une chaîne vide
-    const [error, setError] = useState(""); // État pour le message d'erreur
+    const [newUserName, setNewUserName] = useState("");
+    const [error, setError] = useState("");
 
     useEffect(() => {
         if (isOpen) {
@@ -58,7 +57,7 @@ const UserNameModal = ({ isOpen, onClose }) => {
                             {error}
                         </p>
                     )}{" "}
-                    {/* Afficher le message d'erreur */}
+                    {/* message d'erreur */}
                 </form>
             </div>
         </div>

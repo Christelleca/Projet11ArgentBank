@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchUserProfile = createAsyncThunk(
     "userProfile/fetchUserProfile",
-    async (_, { getState }) => {
+    async () => {
         const token = localStorage.getItem("token");
         if (!token) {
             throw new Error("No token found");
@@ -19,7 +19,6 @@ export const fetchUserProfile = createAsyncThunk(
                     },
                 }
             );
-            console.log("User profile:", response.data.body);
             return response.data.body;
         } catch (error) {
             console.error("Failed to fetch user profile:", error.response.data);
@@ -31,7 +30,7 @@ export const fetchUserProfile = createAsyncThunk(
 const userProfileSlice = createSlice({
     name: "userProfile",
     initialState: {
-        user: null, // Assurez-vous que user est initialisé à null
+        user: null,
         loading: false,
         error: null,
     },
