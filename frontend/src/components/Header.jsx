@@ -15,7 +15,7 @@ function Header() {
         navigate("/");
     };
 
-    // Utiliser useEffect pour surveiller les changements de token et de user
+    // UseEffect pour surveiller les changements de token et de user
     useEffect(() => {}, [token, user]);
 
     return (

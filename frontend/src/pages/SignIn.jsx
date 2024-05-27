@@ -45,7 +45,7 @@ const SignIn = () => {
                     <h1>Sign In</h1>
                     <form onSubmit={handleLoginEvent}>
                         <div className="input-wrapper">
-                            <label htmlFor="username">Email</label>
+                            <label htmlFor="username">Username</label>
                             <input
                                 type="text"
                                 id="username"
