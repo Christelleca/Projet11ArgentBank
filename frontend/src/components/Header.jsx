@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/TokenSlice";
+import logo from "../assets/img/argentBankLogo.webp";
 
 function Header() {
     const user = useSelector((state) => state.userProfile.user);
@@ -23,7 +24,7 @@ function Header() {
             <NavLink className="main-nav-logo" to="/">
                 <img
                     className="main-nav-logo-image"
-                    src="src/assets/img/argentBankLogo.png"
+                    src={logo}
                     alt="Argent Bank Logo"
                 />
                 <h1 className="sr-only">Argent Bank</h1>
